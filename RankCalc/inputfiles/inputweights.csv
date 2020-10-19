@@ -1,0 +1,76 @@
+﻿Benefit Number,Type,Weight1,Weight2
+175,Inpatient Cover,0.1,3.5
+178,Inpatient Cover,0.15,3.5
+51,Inpatient Cover,0.1,3.5
+174,Inpatient Cover,0.15,3.5
+173,Inpatient Cover,0.15,3.5
+53,Inpatient Cover,0.05,3.5
+206,Inpatient Cover,0.1,3.5
+207,Inpatient Cover,0.05,3.5
+222,Inpatient Cover,0.05,3.5
+48,Inpatient Cover,0.05,3.5
+107,Inpatient Cover,0.025,3.5
+108,Inpatient Cover,0.025,3.5
+51a,Orthopaedic,0.15,1.5
+174a,Orthopaedic,0.275,1.5
+173a,Orthopaedic,0.275,1.5
+53a,Orthopaedic,0.075,1.5
+207a,Orthopaedic,0.1125,1.5
+222a,Orthopaedic,0.1125,1.5
+105,Day to Day/Outpatient,0.1,2
+144,Day to Day/Outpatient,0.1,2
+88,Day to Day/Outpatient,0.1,2
+225,Day to Day/Outpatient,0.05,2
+226,Day to Day/Outpatient,0.05,2
+45,Day to Day/Outpatient,0.1,2
+153,Day to Day/Outpatient,0.05,2
+169,Day to Day/Outpatient,0.05,2
+62,Day to Day/Outpatient,0.05,2
+135,Day to Day/Outpatient,0.032,2
+99,Day to Day/Outpatient,0.05,2
+214,Day to Day/Outpatient,0.014,2
+214a,Day to Day/Outpatient,0.014,2
+145,Day to Day/Outpatient,0.014,2
+91,Day to Day/Outpatient,0.014,2
+58a,Day to Day/Outpatient,0.014,2
+58b,Day to Day/Outpatient,0.014,2
+58c,Day to Day/Outpatient,0.014,2
+58d,Day to Day/Outpatient,0.014,2
+227,Day to Day/Outpatient,0.014,2
+140,Day to Day/Outpatient,0.014,2
+251,Day to Day/Outpatient,0.014,2
+63,Day to Day/Outpatient,0.014,2
+247,Day to Day/Outpatient,0.04,2
+30,Day to Day/Outpatient,0.04,2
+115,Day to Day/Outpatient,0.01,2
+177,Day to Day/Outpatient,0.01,2
+101,"Maternity, Fertility & Child Health Benefits",0.083,1.75
+54,"Maternity, Fertility & Child Health Benefits",0.083,1.75
+143,"Maternity, Fertility & Child Health Benefits",0.083,1.75
+224,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+161,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+162,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+141,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+97,"Maternity, Fertility & Child Health Benefits",0.083,1.75
+29,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+150,"Maternity, Fertility & Child Health Benefits",0.028,1.75
+106,"Maternity, Fertility & Child Health Benefits",0.2,1.75
+249,"Maternity, Fertility & Child Health Benefits",0.05,1.75
+250,"Maternity, Fertility & Child Health Benefits",0.1,1.75
+35,"Maternity, Fertility & Child Health Benefits",0.0375,1.75
+33,"Maternity, Fertility & Child Health Benefits",0.0375,1.75
+148,"Maternity, Fertility & Child Health Benefits",0.0375,1.75
+32,"Maternity, Fertility & Child Health Benefits",0.0375,1.75
+20,Outpatient Radiology Benefits,0.3,0.75
+180,Outpatient Radiology Benefits,0.2,0.75
+182,Outpatient Radiology Benefits,0.2,0.75
+128,Outpatient Radiology Benefits,0.2,0.75
+90,Outpatient Radiology Benefits,0.1,0.75
+26,Overseas Benefits,0.2,0.5
+27,Overseas Benefits,0.1,0.5
+100,Overseas Benefits,0.3,0.5
+1,Overseas Benefits,0.05,0.5
+65,Overseas Benefits,0.05,0.5
+189,Overseas Benefits,0.2,0.5
+42,Overseas Benefits,0.05,0.5
+248,Overseas Benefits,0.05,0.5
