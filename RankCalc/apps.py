@@ -6,10 +6,10 @@ import os
 class RankcalcConfig(AppConfig):
     name = 'RankCalc'
     BaseDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    FileFolder = os.path.join(BaseDir, 'RankCalc/inputfiles/')
+    FileFolder = os.path.join(BaseDir, 'staticfiles/inputfiles/')
 
-    inputWeights = "\inputweights.csv"
-    inputRanks = "\inputranks.csv"
+    inputWeights = "inputweights.csv"
+    inputRanks = "inputranks.csv"
 
     dfWeights = pd.read_csv(FileFolder + inputWeights)
     dfRanks = pd.read_csv(FileFolder + inputRanks)
