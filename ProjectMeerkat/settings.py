@@ -136,3 +136,18 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+
+#Rest framework authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'RankCalc.throttling.LimitedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'limited': '2/min',
+    }
+}
+
