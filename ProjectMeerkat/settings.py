@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '@btg$2%-=#tzos4wwsy&$^mkh^08(l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['projectmeerkatapi.herokuapp.com', '127.0.0.1', '.localhost']
 
 
 # Application definition
@@ -147,7 +147,7 @@ REST_FRAMEWORK = {
         'RankCalc.throttling.LimitedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'limited': '2/min',
+        'limited': '2000/min',
     }
 }
 

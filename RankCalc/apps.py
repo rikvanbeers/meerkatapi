@@ -10,10 +10,11 @@ class RankcalcConfig(AppConfig):
 
     inputWeights = "inputweights.csv"
     inputRanks = "inputranks.csv"
+    inputTokens = "usertokens.csv"
 
     dfWeights = pd.read_csv(FileFolder + inputWeights)
     dfRanks = pd.read_csv(FileFolder + inputRanks)
-
+    dfTokens = pd.read_csv(FileFolder + inputTokens)
 
     # Step 3 - Calculate weights
     labelCat = dfWeights.values[:, 1]
@@ -23,3 +24,7 @@ class RankcalcConfig(AppConfig):
 
     # Step 4 - Calculate final scores per plan
     totalScores = dfRanks.columns.values[1:(dfRanks.shape[1])]
+
+    # Step 5 - Determine user tokens list
+    userTokens = dfTokens.values
+

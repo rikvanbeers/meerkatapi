@@ -1,57 +1,66 @@
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from .apps import RankcalcConfig
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 import numpy as np
 
 
-class RankResults(APIView):
+class RankResults(generics.ListAPIView):
 
     """
     Project Meerkat API - Load Health Comparisson results
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def post(self, request, format=None):
 
-         # Step 1 - Determine all data needed
+    def get(self, request, **kwargs):
+
+        # Step 1 - Determine all data needed
         catDim = ["Inpatient Cover", "Orthopaedic", "Day to Day/Outpatient",
-                  "Maternity, Fertility & Child Health Benefits", "Outpatient Radiology Benefits", "Overseas Benefits"]
+                   "Maternity, Fertility & Child Health Benefits", "Outpatient Radiology Benefits", "Overseas Benefits"]
 
-        labelCat = RankcalcConfig.labelCat
+        labelCat      = RankcalcConfig.labelCat
         weightBenefit = RankcalcConfig.weightBenefit
-        weightCat = RankcalcConfig.weightCat
-        rankResults = RankcalcConfig.rankResults
-        totalScores = RankcalcConfig.totalScores
+        weightCat     = RankcalcConfig.weightCat
+        rankResults   = RankcalcConfig.rankResults
+        totalScores   = RankcalcConfig.totalScores
+
+        userTokens    = RankcalcConfig.userTokens
 
         # Step 2 - Read in user input
-        data = request.data
         keys = []
-        inputData = []
+        userinput = []
 
-        for key in data:
-           keys.append(key)
-           inputData.append(data[key])
+        urlparams = self.kwargs
 
-        inputData = np.array(inputData)
-        outputChoice = inputData[0]
-        inputUser = inputData[1:len(inputData)]
+        usertoken     = urlparams["userToken"]
+        outputBenCat  = urlparams["OutputBenCat"]
+        outputBenPlan = urlparams["OutputBenPlan"]
 
-        # Step 3 - Perform calculations
-        finalWeights = np.transpose(inputUser) * weightBenefit * weightCat
-        planStart = 0
+        if usertoken not in userTokens:
+            return Response("User Not Identified", status=status.HTTP_201_CREATED)
 
-        for idx in range(0, len(catDim)):
-            planEnd = planStart + sum(1 for x in labelCat if (x == catDim[idx]))
-            planScores = np.transpose(finalWeights[planStart:planEnd]) @ rankResults[planStart:planEnd, :]
-            totalScores = np.vstack([totalScores, planScores])
-            planStart = planEnd
+        else:
 
-        outputDict = dict(enumerate(totalScores[outputChoice].flatten(), 1))
-        return Response(outputDict, status=status.HTTP_201_CREATED)
+            for key in urlparams:
+                keys.append(key)
+                userinput.append(urlparams[key])
 
+            inputData    = np.array(userinput)
+            inputUser    = inputData[3:len(inputData)].astype(int)
 
-# Steps for publishing
-# Add authentication - from tutorial
-# Add throtling - from tutorial
+            # Step 3 - Perform calculations
+            finalWeights = np.transpose(inputUser) * weightBenefit * weightCat
+            planStart = 0
+
+            for idx in range(0, len(catDim)):
+                planEnd = planStart + sum(1 for x in labelCat if (x == catDim[idx]))
+                planScores = np.transpose(finalWeights[planStart:planEnd]) @ rankResults[planStart:planEnd, :]
+                totalScores = np.vstack([totalScores, planScores])
+                planStart = planEnd
+
+            #outputDict = dict(enumerate(totalScores[outputChoice].flatten(), 1))
+            return Response(totalScores[outputBenCat, outputBenPlan], status=status.HTTP_201_CREATED)
+
