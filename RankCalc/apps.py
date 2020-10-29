@@ -33,6 +33,8 @@ class RankcalcConfig(AppConfig):
     priceList = dfPrices.values                                          # load prices based on price selection input
     inputCovers = dfCovers.values[:, 1:dfCovers.shape[1]].astype(float)  # load all excess / ophthalmic cover input
 
+    descrList = dfDescr.values                                           # load all descriptions per plan / benefit
+
     # Step 5 - Calculate final scores per plan
     totalScores = dfRanks.columns.values[1:(dfRanks.shape[1])]
 

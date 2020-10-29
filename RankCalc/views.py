@@ -7,6 +7,33 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 import numpy as np
 
 
+class DescrResults(generics.ListAPIView):
+
+    """
+    Project Meerkat API - Load plan descriptions
+    """
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request, **kwargs):
+
+        # Step 1 - Determine all data needed
+
+        descrList = RankcalcConfig.descrList
+
+
+        # Step 2 - Read in user input
+        urlparams = self.kwargs
+
+        usertoken = urlparams["userToken"]    # User token specified
+        outputPlan = urlparams["OutputPlan"]  # Output plan number
+        outputBen = urlparams["OutputBen"]    # Output benefit
+
+        # Step 3 - Determine output
+
+        output = descrList[outputBen, outputPlan]
+        return Response(output, status=status.HTTP_201_CREATED)
+
+
 class RankResults(generics.ListAPIView):
 
     """
@@ -18,8 +45,6 @@ class RankResults(generics.ListAPIView):
     def get(self, request, **kwargs):
 
         # Step 1 - Determine all data needed
-        catDim = ["Inpatient Cover", "Orthopaedic", "Day to Day/Outpatient",
-                   "Maternity, Fertility & Child Health Benefits", "Outpatient Radiology Benefits", "Overseas Benefits"]
 
         labelCat      = RankcalcConfig.labelCat
         weightBenefit = RankcalcConfig.weightBenefit
@@ -62,6 +87,10 @@ class RankResults(generics.ListAPIView):
             return Response("User Not Identified", status=status.HTTP_201_CREATED)
 
         else:
+
+            catDim = ["Inpatient Cover", "Orthopaedic", "Day to Day/Outpatient",
+                      "Maternity, Fertility & Child Health Benefits",
+                      "Outpatient Radiology Benefits", "Overseas Benefits"]
 
             for key in urlparams:
                 keys.append(key)

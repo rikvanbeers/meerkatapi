@@ -2,8 +2,8 @@ from django.urls import path
 from RankCalc import views as views
 
 urlpatterns = [
-   path('<str:userToken>&<int:OutputPlan>&<int:OutputType>&<int:OutputBen>&<int:OutputCat>&<int:InputPlans>&'
-        '<int:CurrentPlan>&<int:AltPlan1>&<int:AltPlan2>&<int:AltPlan3>&'
+   path('rankresults/<str:userToken>&<int:OutputPlan>&<int:OutputType>&<int:OutputBen>&<int:OutputCat>&'
+        '<int:InputPlans>&<int:CurrentPlan>&<int:AltPlan1>&<int:AltPlan2>&<int:AltPlan3>&'
         '<str:PrefProvider>&<int:PrefPrice>&<int:MaxPrice>&<int:ExcessCover>&<int:ExcessValue>&<int:OphthCover>&'
         '<int:Ben1>&<int:Ben2>&<int:Ben3>&<int:Ben4>&<int:Ben5>&<int:Ben6>&<int:Ben7>&<int:Ben8>&'
         '<int:Ben9>&<int:Ben10>&<int:Ben11>&<int:Ben12>&<int:Ben13>&<int:Ben14>&<int:Ben15>&<int:Ben16>&<int:Ben17>&'
@@ -14,4 +14,7 @@ urlpatterns = [
         '<int:Ben54>&<int:Ben55>&<int:Ben56>&<int:Ben57>&<int:Ben58>&<int:Ben59>&<int:Ben60>&<int:Ben61>&<int:Ben62>&'
         '<int:Ben63>&<int:Ben64>&<int:Ben65>&<int:Ben66>&<int:Ben67>&<int:Ben68>&<int:Ben69>&<int:Ben70>&<int:Ben71>&'
         '<int:Ben72>&<int:Ben73>&<int:Ben74>&<int:Ben75>', views.RankResults.as_view(), name='rankresults'),
+
+   path('descriptions/<str:userToken>&<int:OutputPlan>&<int:OutputBen>',
+        views.DescrResults.as_view(), name='descrresults'),
 ]
