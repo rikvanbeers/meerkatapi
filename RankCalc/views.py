@@ -127,8 +127,6 @@ class RankResults(generics.ListAPIView):
 
             # Apply filters to scores
             prefResults = totResults[:, listPlans[0:inputPlans]]
-            print(prefResults)
-            print(listPlans)
             totResults = np.delete(totResults, listPlans[0:inputPlans], 1)                   # delete plans selected in comparison
             totResults = np.delete(totResults, np.where(totResults[4, :] >= maxPrice), 1)    # delete plans price exceeding max
             totResults = np.delete(totResults, np.where(totResults[5, :] < excessCover), 1)  # delete plans based on excess cover
@@ -136,7 +134,6 @@ class RankResults(generics.ListAPIView):
             totResults = np.delete(totResults, np.where(totResults[7, :] < ophthCover),  1)  # delete plans based on ophthalmic
 
             if prefProvider != "All":
-                print(prefProvider)
                 totResults = np.delete(totResults, np.where(totResults[1, :] != prefProvider), 1)  # delete plans <> preferred prov
 
             # Calculate final scores and rank plans
@@ -149,11 +146,9 @@ class RankResults(generics.ListAPIView):
             # Add back in the results of the preferred plans specified in the API call
             totResults = np.hstack([totResults, prefResults])
 
-
             # Determine outputs
             outputPlanList = np.arange(start=0, stop=4, step=1) + (totSelect - 1)
             outputPlanList = np.hstack([outputPlanList, np.flip(sortList, 0)])
-            print(outputPlanList)
 
             if outputType == 1:             # Calculate score per plan and per benefit
                 benefitScores = 10 * totResults[8 + 6 + outputBen, :] / max(totResults[8 + 6 + outputBen, :])
@@ -167,15 +162,15 @@ class RankResults(generics.ListAPIView):
                 output = priceList[outputPlanList[outputPlan], prefPrice]
 
             elif outputType == 4:           # Calculate score on total basis
-                finalTotalScores = 10 * totResults[2, :] / max(totResults[2, :])
+                finalTotalScores = 10 * totResults[2, :] / max(totResults[2, 0:(totSelect-1)])
                 output = finalTotalScores[outputPlanList[outputPlan]]
 
             elif outputType == 5:           # Calculate score for Excess amount
-                finalExcessScores = 10 * totResults[3, :] / max(totResults[3, :])
+                finalExcessScores = 10 * totResults[3, :] / max(totResults[3, 0:(totSelect-1)])
                 output = finalExcessScores[outputPlanList[outputPlan]]
 
             else:                           # Calculate output plan number
-                output = totResults[0,outputPlanList[outputPlan]]
+                output = totResults[0, outputPlanList[outputPlan]]
 
             return Response(output, status=status.HTTP_201_CREATED)
 
