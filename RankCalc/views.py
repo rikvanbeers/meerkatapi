@@ -150,6 +150,8 @@ class RankResults(generics.ListAPIView):
             outputPlanList = np.arange(start=0, stop=4, step=1) + (totSelect - 1)
             outputPlanList = np.hstack([outputPlanList, np.flip(sortList, 0)])
 
+            priceIdx = totResults[0, outputPlanList[outputPlan]]
+
             if outputType == 1:             # Calculate score per plan and per benefit
                 benefitScores = 10 * totResults[8 + 6 + outputBen, :] / max(totResults[8 + 6 + outputBen, :])
                 output = benefitScores[outputPlanList[outputPlan]]
@@ -159,7 +161,7 @@ class RankResults(generics.ListAPIView):
                 output = categoryScores[outputPlanList[outputPlan]]
 
             elif outputType == 3:           # Calculate price for the plan
-                output = priceList[outputPlanList[outputPlan], prefPrice]
+                output = priceList[priceIdx, prefPrice]
 
             elif outputType == 4:           # Calculate score on total basis
                 finalTotalScores = 10 * totResults[2, :] / max(totResults[2, 0:(totSelect-1)])
