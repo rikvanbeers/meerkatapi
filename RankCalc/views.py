@@ -138,34 +138,34 @@ class RankResults(generics.ListAPIView):
             maxList = min(5, totSelect)
 
             intermediateScores = 10 * totResults[2, :] / max(totResults[2, :])
-            sortList = np.argpartition(intermediateScores, -maxList)[-maxList:]
+            sortList = np.argpartition(intermediateScores, -maxList)[-maxList:] + 1
 
             # Determine outputs
             outputPlanList = np.hstack([listPlans, np.flip(sortList, 0)])
 
-            priceIdx = totResults[0, outputPlanList[outputPlan - 1]]
+            priceIdx = totResults[0, outputPlanList[outputPlan - 1]] - 1
 
             if outputType == 1:  # Calculate score per plan and per benefit
                 benefitScores = 10 * totResults[7 + 6 + outputBen, :] / max(totResults[7 + 6 + outputBen, :])
-                output = benefitScores[outputPlanList[outputPlan - 1]]
+                output = benefitScores[outputPlanList[outputPlan - 1] - 1]
 
             elif outputType == 2:  # Calculate score per plan and per benefit category
                 categoryScores = 10 * totResults[7 + outputCat, :] / max(totResults[7 + outputCat, :])
-                output = categoryScores[outputPlanList[outputPlan - 1]]
+                output = categoryScores[outputPlanList[outputPlan - 1] -1 ]
 
             elif outputType == 3:  # Calculate price for the plan
                 output = priceList[priceIdx, prefPrice]
 
             elif outputType == 4:  # Calculate score on total basis
                 finalTotalScores = 10 * totResults[2, :] / max(totResults[2, 0:(totSelect - 1)])
-                output = finalTotalScores[outputPlanList[outputPlan - 1]]
+                output = finalTotalScores[outputPlanList[outputPlan - 1] - 1]
 
             elif outputType == 5:  # Calculate score for Excess amount
                 finalExcessScores = 10 * totResults[3, :] / max(totResults[3, 0:(totSelect - 1)])
-                output = finalExcessScores[outputPlanList[outputPlan - 1]]
+                output = finalExcessScores[outputPlanList[outputPlan - 1] - 1]
 
             else:  # Calculate output plan number
-                output = totResults[0, outputPlanList[outputPlan - 1]]
+                output = totResults[0, outputPlanList[outputPlan - 1] - 1] + 1
 
             return Response(output, status=status.HTTP_201_CREATED)
 
