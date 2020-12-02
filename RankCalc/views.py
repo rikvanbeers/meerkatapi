@@ -30,7 +30,7 @@ class DescrResults(generics.ListAPIView):
 
         # Step 3 - Determine output
 
-        output = descrList[outputBen - 1, outputPlan - 1]
+        output = descrList[outputBen - 1, outputPlan]
         return Response(output, status=status.HTTP_201_CREATED)
 
 
