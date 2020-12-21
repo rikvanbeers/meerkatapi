@@ -142,7 +142,7 @@ class RankResults(generics.ListAPIView):
             # Step 5 - Calculate list of alternative plans & full list of plans
             totSelect = totResults.shape[1]
             maxList   = min(5, totSelect)
-            sortList  = np.argpartition(totResults[2, :], -maxList)[-maxList:] + 1
+            sortList  = np.argpartition(totResults[2, :], -maxList)[-maxList:]
             finalList = totResults[0, sortList]
 
             outputPlanList = np.append(listPlans, np.flip(finalList, 0) + 1)
