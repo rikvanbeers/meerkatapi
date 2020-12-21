@@ -50,7 +50,7 @@ class RankResults(generics.ListAPIView):
         weightBenefit = RankcalcConfig.weightBenefit
         weightCat     = RankcalcConfig.weightCat
         rankResults   = RankcalcConfig.rankResults
-        totalScores   = RankcalcConfig.totalScores
+        catScores     = RankcalcConfig.catScores
 
         provNames     = RankcalcConfig.provNames
         priceList     = RankcalcConfig.priceList
@@ -111,20 +111,26 @@ class RankResults(generics.ListAPIView):
             for idx in range(0, len(catDim)):
                 planEnd = planStart + sum(1 for x in labelCat if (x == catDim[idx]))
                 planScores = np.transpose(finalWeights[planStart:planEnd]) @ rankResultsInput[planStart:planEnd, :]
-                totalScores = np.vstack([totalScores, planScores])
+                catScores = np.vstack([catScores, planScores])
                 planStart = planEnd
 
 
-            # Step 3 - Calculate results based on selection
-            sumScores = np.transpose(np.ones(totalScores.shape[0] - 1, dtype=int)) @ totalScores[1:totalScores.shape[0], :]
+            # Step 3 - Calculate scores for all plans, benefits and categories
+            sumScores         = np.transpose(np.ones(catScores.shape[0] - 1, dtype=int)) @ catScores[1:catScores.shape[0], :]
+            totalScores       = 10 * sumScores / max(sumScores)
+            benefitScores     = 10 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
+            categoryScores    = 10 * catScores[outputCat, :] / max(catScores[outputCat, :])
+            excessCoverScores = 10 * catScores[1, :] / max(catScores[1, :])
 
-            # Construct selection matrix for filtering
+            # Step 4 - Filter results
             listPlans = [currentPlan, altPlan1, altPlan2, altPlan3]
-            totResults = np.arange(start=0, stop=totalScores.shape[1], step=1)
-            totResults = np.vstack([totResults, provNames, sumScores, totalScores[1, :], priceList[:, prefPrice],
-                                        np.transpose(inputCovers), totalScores[1:totalScores.shape[0], :], detailedPlanScores])
+            totResults = np.arange(start=0, stop=catScores.shape[1], step=1)
+            totResults = np.vstack([totResults, provNames, totalScores, excessCoverScores, priceList[:, prefPrice],
+                                        np.transpose(inputCovers), categoryScores, benefitScores])
 
-            # Apply filters to scores
+            for idx in listPlans:
+                totResults = np.delete(totResults, np.where(totResults[0, :] == idx -1), 1)  # delete plans already selected
+
             totResults = np.delete(totResults, np.where(totResults[4, :] >= maxPrice), 1)    # delete plans price exceeding max
             totResults = np.delete(totResults, np.where(totResults[5, :] < excessCover), 1)  # delete plans based on excess cover
             totResults = np.delete(totResults, np.where(totResults[6, :] > excessValue), 1)  # delete plans based on excess value
@@ -133,39 +139,32 @@ class RankResults(generics.ListAPIView):
             if prefProvider != "All":
                 totResults = np.delete(totResults, np.where(totResults[1, :] != prefProvider), 1)  # delete plans <> preferred prov
 
-            # Calculate final scores and rank plans
+            # Step 5 - Calculate list of alternative plans & full list of plans
             totSelect = totResults.shape[1]
-            maxList = min(5, totSelect)
+            maxList   = min(5, totSelect)
+            sortList  = np.argpartition(totResults[2, :], -maxList)[-maxList:] + 1
+            finalList = totResults[0, sortList]
 
-            intermediateScores = 10 * totResults[2, :] / max(totResults[2, :])
-            sortList = np.argpartition(intermediateScores, -maxList)[-maxList:] + 1
+            outputPlanList = np.append(listPlans, np.flip(finalList, 0) + 1)
 
-            # Determine outputs
-            outputPlanList = np.hstack([listPlans, np.flip(sortList, 0)])
-
-            priceIdx = totResults[0, outputPlanList[outputPlan - 1]] - 1
-
+            # Step 6 - Determine outputs
             if outputType == 1:  # Calculate score per plan and per benefit
-                benefitScores = 10 * totResults[7 + 6 + outputBen, :] / max(totResults[7 + 6 + outputBen, :])
                 output = benefitScores[outputPlanList[outputPlan - 1] - 1]
 
             elif outputType == 2:  # Calculate score per plan and per benefit category
-                categoryScores = 10 * totResults[7 + outputCat, :] / max(totResults[7 + outputCat, :])
-                output = categoryScores[outputPlanList[outputPlan - 1] -1 ]
+                output = categoryScores[outputPlanList[outputPlan - 1] - 1]
 
             elif outputType == 3:  # Calculate price for the plan
-                output = priceList[priceIdx, prefPrice]
+                output = priceList[outputPlanList[outputPlan - 1] - 1, prefPrice]
 
             elif outputType == 4:  # Calculate score on total basis
-                finalTotalScores = 10 * totResults[2, :] / max(totResults[2, 0:(totSelect - 1)])
-                output = finalTotalScores[outputPlanList[outputPlan - 1] - 1]
+                output = totalScores[outputPlanList[outputPlan - 1] - 1]
 
             elif outputType == 5:  # Calculate score for Excess amount
-                finalExcessScores = 10 * totResults[3, :] / max(totResults[3, 0:(totSelect - 1)])
-                output = finalExcessScores[outputPlanList[outputPlan - 1] - 1]
+                output = excessCoverScores[outputPlanList[outputPlan - 1] - 1]
 
             else:  # Calculate output plan number
-                output = totResults[0, outputPlanList[outputPlan - 1] - 1] + 1
+                output = outputPlanList[outputPlan - 1]
 
             return Response(output, status=status.HTTP_201_CREATED)
 

@@ -36,7 +36,7 @@ class RankcalcConfig(AppConfig):
     descrList = dfDescr.values                                           # load all descriptions per plan / benefit
 
     # Step 5 - Calculate final scores per plan
-    totalScores = dfRanks.columns.values[1:(dfRanks.shape[1])]
+    catScores = dfRanks.columns.values[1:(dfRanks.shape[1])]
 
     # Step 5 - Determine user tokens list
     userTokens = dfTokens.values

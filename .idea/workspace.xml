@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8858ceb1-32dc-4343-a4eb-38fcb4be8693" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/staticfiles/inputfiles/inputdescr.csv" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/inputfiles/inputdescr.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RankCalc/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/RankCalc/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RankCalc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RankCalc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/inputfiles/inputranks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/inputfiles/inputranks.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="17">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -49,15 +52,15 @@
       <list>
         <option value="$PROJECT_DIR$/ProjectMeerkat/urls.py" />
         <option value="$PROJECT_DIR$/RankCalc/throttling.py" />
-        <option value="$PROJECT_DIR$/RankCalc/apps.py" />
         <option value="$PROJECT_DIR$/RankCalc/urls.py" />
         <option value="$PROJECT_DIR$/RankCalc/master_code.py" />
         <option value="$PROJECT_DIR$/ProjectMeerkat/settings.py" />
+        <option value="$PROJECT_DIR$/RankCalc/apps.py" />
         <option value="$PROJECT_DIR$/RankCalc/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-20" />
     <option name="y" value="12" />
     <option name="width" value="1936" />
@@ -124,8 +127,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-20" y="12" width="1936" height="1049" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28762007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29402348" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -174,16 +178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RankCalc/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectMeerkat/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -195,16 +189,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RankCalc/master_code.py" />
-    <entry file="file://$PROJECT_DIR$/RankCalc/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectMeerkat/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -215,10 +199,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/RankCalc/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RankCalc/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="17">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
