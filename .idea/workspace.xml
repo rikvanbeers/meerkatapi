@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8858ceb1-32dc-4343-a4eb-38fcb4be8693" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectMeerkat/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectMeerkat/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RankCalc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RankCalc/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,22 +17,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="156" column="65" lean-forward="true" selection-start-line="156" selection-start-column="65" selection-end-line="156" selection-end-column="65" />
+            <state relative-caret-position="652">
+              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProjectMeerkat/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-              <folding>
-                <element signature="e#315#339#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +54,8 @@
         <option value="$PROJECT_DIR$/RankCalc/urls.py" />
         <option value="$PROJECT_DIR$/RankCalc/master_code.py" />
         <option value="$PROJECT_DIR$/RankCalc/apps.py" />
-        <option value="$PROJECT_DIR$/ProjectMeerkat/settings.py" />
         <option value="$PROJECT_DIR$/RankCalc/views.py" />
+        <option value="$PROJECT_DIR$/ProjectMeerkat/settings.py" />
       </list>
     </option>
   </component>
@@ -139,7 +128,7 @@
     <frame x="-20" y="12" width="1936" height="1049" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29402348" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29722518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -221,8 +210,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectMeerkat/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="2346">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
           <folding>
             <element signature="e#315#339#0" expanded="true" />
           </folding>
@@ -231,8 +220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="156" column="65" lean-forward="true" selection-start-line="156" selection-start-column="65" selection-end-line="156" selection-end-column="65" />
+        <state relative-caret-position="652">
+          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

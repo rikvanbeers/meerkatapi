@@ -116,11 +116,27 @@ class RankResults(generics.ListAPIView):
 
 
             # Step 3 - Calculate scores for all plans, benefits and categories
-            sumScores         = np.transpose(np.ones(catScores.shape[0] - 1, dtype=int)) @ catScores[1:catScores.shape[0], :]
-            totalScores       = 10 * sumScores / max(sumScores)
-            benefitScores     = 10 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
-            categoryScores    = 10 * catScores[outputCat, :] / max(catScores[outputCat, :])
-            excessCoverScores = 10 * catScores[1, :] / max(catScores[1, :])
+            sumScores = np.transpose(np.ones(catScores.shape[0] - 1, dtype=int)) @ catScores[1:catScores.shape[0], :]
+
+            if max(sumScores) != 0:
+                totalScores = 10 * sumScores / max(sumScores)
+            else:
+                totalScores = 0
+
+            if max(detailedPlanScores[outputBen - 1, :]) != 0:
+                benefitScores  = 10 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
+            else:
+                benefitScores  = 0
+
+            if max(catScores[outputCat, :]) != 0:
+                categoryScores = 10 * catScores[outputCat, :] / max(catScores[outputCat, :])
+            else:
+                categoryScores = 0
+
+            if max(catScores[1, :]) != 0:
+                excessCoverScores = 10 * catScores[1, :] / max(catScores[1, :])
+            else:
+                excessCoverScores = 0
 
             # Step 4 - Filter results
             listPlans = [currentPlan, altPlan1, altPlan2, altPlan3]
