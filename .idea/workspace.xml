@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8858ceb1-32dc-4343-a4eb-38fcb4be8693" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectMeerkat/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectMeerkat/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RankCalc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RankCalc/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+            <state relative-caret-position="192">
+              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -210,8 +208,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectMeerkat/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
+        <state relative-caret-position="601">
+          <caret line="145" column="4" lean-forward="true" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
           <folding>
             <element signature="e#315#339#0" expanded="true" />
           </folding>
@@ -220,8 +218,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RankCalc/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        <state relative-caret-position="192">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
