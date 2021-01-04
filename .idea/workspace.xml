@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8858ceb1-32dc-4343-a4eb-38fcb4be8693" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ProjectMeerkat/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectMeerkat/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="8858ceb1-32dc-4343-a4eb-38fcb4be8693" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-20" y="12" width="1936" height="1049" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29722518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
