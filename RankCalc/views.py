@@ -96,7 +96,7 @@ class RankResults(generics.ListAPIView):
                 userinput.append(urlparams[key])
 
             inputData    = np.array(userinput)
-            inputUser    = inputData[15:len(inputData)].astype(int)
+            inputUser    = inputData[15:len(inputData)].astype(int) / 10
 
             # Step 1 - Calculate detailed scores per plan
             rankResultsInput = rankResults[1:rankResults.shape[0], :].astype(float)
