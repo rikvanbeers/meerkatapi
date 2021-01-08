@@ -81,6 +81,7 @@ class RankResults(generics.ListAPIView):
         excessCover   = urlparams["ExcessCover"]        # 0 = does not matter, 1 = should be included
         excessValue   = urlparams["ExcessValue"]        # maximum value Excess allowed
         ophthCover    = urlparams["OphthCover"]         # 0 = does not matter, 1 = should be included
+        ortScore      = urlparams["OrtScore"]           # Orthopaedic category score - vaues are {1,2,3,4,5}
 
         if usertoken not in userTokens:
             return Response("User Not Identified", status=status.HTTP_201_CREATED)
@@ -96,7 +97,7 @@ class RankResults(generics.ListAPIView):
                 userinput.append(urlparams[key])
 
             inputData    = np.array(userinput)
-            inputUser    = inputData[15:len(inputData)].astype(int) / 10
+            inputUser    = inputData[16:len(inputData)].astype(int) / 10
 
             # Step 1 - Calculate detailed scores per plan
             rankResultsInput = rankResults[1:rankResults.shape[0], :].astype(float)
@@ -104,6 +105,15 @@ class RankResults(generics.ListAPIView):
             detailedPlanScores = np.transpose(finalWeightsDetailed * np.transpose(rankResultsInput))
 
             # Step 2 - Calculate scores per benefit category and plan
+            inpatientDim = np.count_nonzero(labelCat == catDim[0])
+
+            if ortScore == 1:
+                weightCat[0:inpatientDim] = 5
+            elif ortScore == 2:
+                weightCat[0:inpatientDim] = 4.25
+            else:
+                weightCat[0:inpatientDim] = 3.5
+
             rankResultsInput = rankResults[1:rankResults.shape[0], :].astype(float)
             finalWeights = np.transpose(inputUser) * weightBenefit * weightCat
             planStart = 0
